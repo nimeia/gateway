@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>gateway</groupId>
+    <artifactId>build-helper</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <description>
+        辅助项目，用于帮助idea开发时自动编译其它项目，同时其它项目不存在结构上的关系，只存在依赖关系，这样可以方便自动化分开发版
+    </description>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.encoding>utf-8</maven.compiler.encoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <modules>
+        <module>../bom</module>
+        <module>../api</module>
+        <module>../gateway-model</module>
+        <module>../gateway-vo</module>
+        <!--<module>../gateway-admin-ui</module>-->
+        <module>../gateway-admin</module>
+        <module>../gateway-worker</module>
+    </modules>
+
+</project>

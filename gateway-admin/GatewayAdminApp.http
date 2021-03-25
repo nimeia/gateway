@@ -1,0 +1,21 @@
+###
+POST http://localhost:8080/client/add
+Content-Type: application/json
+
+{
+    "token": "xxxx",
+    "data": {
+        "name": "policyApp",
+        "appId": "policyApp",
+        "password": "xxxxx",
+        "appSecurity": "xxxx",
+        "vaildDate": "2020-01-01 00:00:00",
+        "tokenCanCreate": true,
+        "vaildFlag": true,
+        "desc": "test app"
+    }
+}
+
+
+###
+
