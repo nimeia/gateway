@@ -59,6 +59,15 @@ public class InMemoryConfigDataInfoService {
         //todo 增加对应的配置信息
     }
 
+    /**
+     * 更新access token
+     * @param dataKey
+     * @param dataType
+     */
+    public void updateAccessTokenOnly(String dataKey, ModifyEvent.ModifyDateType dataType) {
+
+    }
+
     public Map<String, ClientVo> getClientVoMap() {
         return clientVoMap;
     }
@@ -66,4 +75,6 @@ public class InMemoryConfigDataInfoService {
     public Map<String, SystemVo> getStringSystemVoMap() {
         return stringSystemVoMap;
     }
+
+
 }

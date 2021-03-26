@@ -4,6 +4,7 @@ import gateway.worker.init.SystemStartUpConfigDataInitialize;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
@@ -11,17 +12,23 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.integration.redis.util.RedisLockRegistry;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import javax.annotation.PostConstruct;
 import java.util.function.Predicate;
 
 @Configuration
 @Slf4j
+@EnableScheduling
+@EnableAsync
 public class GlobalConfig implements ApplicationContextAware {
 
     ApplicationContext applicationContext;
@@ -29,8 +36,12 @@ public class GlobalConfig implements ApplicationContextAware {
     @Autowired
     SystemStartUpConfigDataInitialize systemStartUpConfigDataInitialize;
 
+
+
     @Autowired
+    @Qualifier("webFluxConversionService")
     void setGenericConversionService(GenericConversionService genericConversionService) {
+        // 用于在配置路由时自动把字符串转成 bean
         genericConversionService.addConverter(new Converter<String, Predicate>() {
             @Override
             public Predicate convert(String source) {

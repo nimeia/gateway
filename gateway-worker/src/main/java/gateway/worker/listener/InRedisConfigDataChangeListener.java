@@ -58,6 +58,8 @@ public class InRedisConfigDataChangeListener {
                     inMemoryConfigDataInfoService.update(modifyEvent.getDataKey(),modifyEvent.getDataType());
                 }else if(modifyEvent.getAction().equals(ModifyEvent.ModifyAction.ADD)){
                     inMemoryConfigDataInfoService.add(modifyEvent.getDataKey(),modifyEvent.getDataType());
+                }else if(modifyEvent.getAction().equals(ModifyEvent.ModifyAction.ACCESS_TOKEN_UPDATE)){
+                    inMemoryConfigDataInfoService.updateAccessTokenOnly(modifyEvent.getDataKey(),modifyEvent.getDataType());
                 }
                 System.out.println(modifyEvent);
             } catch (JsonProcessingException e) {

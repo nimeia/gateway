@@ -46,11 +46,11 @@ public class RouterModifier {
 
         List<PredicateDefinition> predicateDefinitions = new ArrayList<>();
 
-        PredicateDefinition requestBodyPredicateDefinition = new PredicateDefinition();
-        requestBodyPredicateDefinition.setName("ReadBody");
-        requestBodyPredicateDefinition.setArgs(Maps.of("inClass","java.lang.String")
-                .and("predicate","gateway.worker.predicate.TestPredicate").build());
-        predicateDefinitions.add(requestBodyPredicateDefinition);
+//        PredicateDefinition requestBodyPredicateDefinition = new PredicateDefinition();
+//        requestBodyPredicateDefinition.setName("ReadBody");
+//        requestBodyPredicateDefinition.setArgs(Maps.of("inClass","java.lang.String")
+//                .and("predicate","gateway.worker.predicate.TestPredicate").build());
+//        predicateDefinitions.add(requestBodyPredicateDefinition);
 
         if(routerVo.getPredicateVos()!=null){
             for (PredicateVo predicateVo : routerVo.getPredicateVos()) {

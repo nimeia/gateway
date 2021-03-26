@@ -32,6 +32,7 @@ public class ModifyEvent implements Serializable {
         INIT_ALL,
         DELETE,
         UPDATE,
+        ACCESS_TOKEN_UPDATE,
         ADD
     }
 
