@@ -3,6 +3,7 @@ package gateway.worker.filter.global;
 import gateway.vo.ClientApiVo;
 import gateway.vo.ClientVo;
 import gateway.vo.SystemVo;
+import gateway.worker.service.InMemoryConfigDataInfoService;
 import gateway.worker.utils.GatewayConstants;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwt;
@@ -32,10 +33,7 @@ import java.util.Optional;
 public class GlobalAuthFilter implements GlobalFilter, Ordered {
 
     @Autowired
-    Map<String, ClientVo> clientVoMap;
-
-    @Autowired
-    Map<String, SystemVo> stringSystemVoMap;
+    InMemoryConfigDataInfoService inMemoryConfigDataInfoService;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -54,7 +52,7 @@ public class GlobalAuthFilter implements GlobalFilter, Ordered {
             return rednerErrorMessage(exchange, "appid or authentication not valid");
         }
         //check if the client exists
-        ClientVo clientVo = clientVoMap.get(appId);
+        ClientVo clientVo = inMemoryConfigDataInfoService.getClientVoMap().get(appId);
         if (clientVo == null) {
             return rednerErrorMessage(exchange, "appid not valid");
         }

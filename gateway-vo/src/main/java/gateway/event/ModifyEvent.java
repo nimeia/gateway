@@ -14,7 +14,7 @@ public class ModifyEvent implements Serializable {
 
     private final long timestamp = System.currentTimeMillis();
 
-    private ModifyDateType type;
+    private ModifyDateType dataType;
 
     private ModifyAction action;
 

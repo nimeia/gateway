@@ -4,6 +4,7 @@ import cn.hutool.core.date.DateField;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.map.MapUtil;
 import gateway.vo.*;
+import gateway.worker.service.InMemoryConfigDataInfoService;
 import gateway.worker.service.RouterModifier;
 import io.jsonwebtoken.lang.Maps;
 import lombok.extern.slf4j.Slf4j;
@@ -20,26 +21,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
+/**
+ * 开发测试用
+ */
 @Configuration
 @Profile("dev")
 @Slf4j
 public class DevInitData {
+    @Autowired
+    InMemoryConfigDataInfoService inMemoryConfigDataInfoService;
 
     @Autowired
     RouterModifier routerModifier;
 
     @Autowired
     GenericConversionService genericConversionService;
-
-    @Bean
-    Map<String, ClientVo> clientVoMap() {
-        return new HashMap<>();
-    }
-
-    @Bean
-    Map<String, SystemVo> stringSystemVoMap() {
-        return new HashMap<>();
-    }
 
     @PostConstruct
     void initDevData() {
@@ -63,8 +59,8 @@ public class DevInitData {
             }
         });
 
-        Map<String, ClientVo> clientVoMap = clientVoMap();
-        Map<String, SystemVo> stringSystemVoMap = stringSystemVoMap();
+        Map<String, ClientVo> clientVoMap = inMemoryConfigDataInfoService.getClientVoMap();
+        Map<String, SystemVo> stringSystemVoMap = inMemoryConfigDataInfoService.getStringSystemVoMap();
 
         ClientVo clientVo = ClientVo.builder().id(1L).appId("cliam-sys").appSecurity("=====").password("pssword")
                 .name("cliam-system").vaildDate(DateTime.now().offset(DateField.YEAR, 1)).vaildFlag(true)
