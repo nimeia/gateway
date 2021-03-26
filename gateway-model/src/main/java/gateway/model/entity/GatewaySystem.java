@@ -31,6 +31,15 @@ public class GatewaySystem implements Serializable {
 
     private String name;
 
+    /**
+     * 微信 企业微信 钉钉 等
+     */
+    private String systemType;
+
+    private String appId;
+
+    private String appSecurity;
+
     @CreatedDate
     private Date dateCreated;
 
