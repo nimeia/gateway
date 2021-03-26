@@ -2,7 +2,7 @@ package gateway.admin.web;
 
 import gateway.admin.service.InRedisConfigDataService;
 import gateway.api.base.response.ApiSimpleResponse;
-import gateway.event.InitAllEvent;
+import gateway.event.ModifyEvent;
 import gateway.utils.GatewayVoConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -30,7 +30,7 @@ public class PushDataController {
         // todo 初始化所有数据到 redis 并发送更新通知
         inRedisConfigDataService.initAllDataToRedis();
         redisTemplate.convertAndSend(GatewayVoConstants.REDIS_UPDATE_EVENT_CHANNEL,
-                InitAllEvent.builder().message("update all").source("system admin").build());
+                ModifyEvent.builder().message("更新所有").action(ModifyEvent.ModifyAction.INIT_ALL).source("admin system").build());
         return ApiSimpleResponse.<Boolean>builder().message("success").data(true).build();
     }
 }

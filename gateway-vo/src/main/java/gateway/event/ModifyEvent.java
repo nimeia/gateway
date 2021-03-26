@@ -14,9 +14,11 @@ public class ModifyEvent implements Serializable {
 
     private final long timestamp = System.currentTimeMillis();
 
-    private ModifyType type;
+    private ModifyDateType type;
 
     private ModifyAction action;
+
+    private String dataKey;
 
     private String message;
 
@@ -27,6 +29,7 @@ public class ModifyEvent implements Serializable {
      * 增加类型
      */
     public enum ModifyAction implements Serializable {
+        INIT_ALL,
         DELETE,
         UPDATE,
         ADD
@@ -36,7 +39,7 @@ public class ModifyEvent implements Serializable {
     /**
      * 操作的数据类型
      */
-    public enum ModifyType implements Serializable {
+    public enum ModifyDateType implements Serializable {
         /**
          * 接入系统
          */
