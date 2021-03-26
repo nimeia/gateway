@@ -40,6 +40,7 @@ public class WechatApiAuthJob {
     @Autowired
     InMemoryConfigDataInfoService inMemoryConfigDataInfoService;
 
+    //todo 时间需要按实际重新调整
     @Scheduled(initialDelay = 2 * 60 * 1000, fixedRate = 2 * 60 * 1000)
     void updateAccessToken() {
         log.info("===========update the access token start===================");
