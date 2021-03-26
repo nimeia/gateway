@@ -67,9 +67,9 @@ public class DevInitData {
 
 //        FilterVo filterVo = FilterVo.builder().id(1L).name("").build();
 //        routerVo.setFilterVos(Arrays.asList(filterVo));
-        FilterVo filterVo = FilterVo.builder().id(12L).name("EdiRequestBody")
-                .args(MapUtil.<String,String>builder().put("key","hello").build()).build();
-        routerVo.setFilterVos(Arrays.asList(filterVo));
+//        FilterVo filterVo = FilterVo.builder().id(12L).name("EdiRequestBody")
+//                .args(MapUtil.<String,String>builder().put("key","hello").build()).build();
+//        routerVo.setFilterVos(Arrays.asList(filterVo));
 
         PredicateVo predicateVo = PredicateVo.builder().id(1L).name("Path").order(1).routerId(routerVo.getId()).args(
                 Maps.of("patterns", "/anything").build()

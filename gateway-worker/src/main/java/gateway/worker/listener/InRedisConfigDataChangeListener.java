@@ -63,11 +63,8 @@ public class InRedisConfigDataChangeListener {
             } catch (JsonProcessingException e) {
                 log.error(e.getMessage(), e);
             }
-
         });
 
-        reactiveRedisTemplate.convertAndSend(GatewayVoConstants.REDIS_UPDATE_EVENT_CHANNEL, ModifyEvent.builder().message("asdf花木成畦手自栽"
-        ).action(ModifyEvent.ModifyAction.INIT_ALL).build()).subscribe();
     }
 
 }
