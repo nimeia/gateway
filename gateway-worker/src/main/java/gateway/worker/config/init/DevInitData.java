@@ -34,30 +34,8 @@ public class DevInitData {
     @Autowired
     RouterModifier routerModifier;
 
-    @Autowired
-    GenericConversionService genericConversionService;
-
     @PostConstruct
     void initDevData() {
-
-        genericConversionService.addConverter(new Converter<String, java.util.function.Predicate>() {
-            @Override
-            public Predicate convert(String source) {
-                try {
-                    boolean assignableFrom = Predicate.class.isAssignableFrom(Class.forName(source));
-                    if (assignableFrom) {
-                        return (Predicate) Class.forName(source).newInstance();
-                    }
-                } catch (ClassNotFoundException e) {
-                    log.error(e.getLocalizedMessage(), e);
-                } catch (IllegalAccessException e) {
-                    log.error(e.getLocalizedMessage(), e);
-                } catch (InstantiationException e) {
-                    log.error(e.getLocalizedMessage(), e);
-                }
-                return null;
-            }
-        });
 
         Map<String, ClientVo> clientVoMap = inMemoryConfigDataInfoService.getClientVoMap();
         Map<String, SystemVo> stringSystemVoMap = inMemoryConfigDataInfoService.getStringSystemVoMap();
