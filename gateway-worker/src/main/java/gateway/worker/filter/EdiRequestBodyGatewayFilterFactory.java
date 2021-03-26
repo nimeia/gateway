@@ -20,7 +20,10 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Component
+/**
+ * only a demo for rewrite request body
+ */
+//@Component
 @Slf4j
 public class EdiRequestBodyGatewayFilterFactory extends AbstractGatewayFilterFactory<EdiRequestBodyGatewayFilterFactory.Config> {
 
