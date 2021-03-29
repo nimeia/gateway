@@ -9,7 +9,7 @@ spring :
     gateway :
       enabled : true
       httpclient :
-        connect-timeout : 100
+        connect-timeout : 1000
   profiles :
     active : dev
 

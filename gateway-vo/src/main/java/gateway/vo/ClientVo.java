@@ -24,6 +24,11 @@ public class ClientVo implements Serializable {
 
     private String appSecurity;
 
+    /**
+     * oauth 2 认证时的临时解密key
+     */
+    private String oauth2SignKey;
+
     private Date vaildDate;
 
     private Boolean tokenCanCreate;

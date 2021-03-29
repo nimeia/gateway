@@ -9,17 +9,12 @@ import gateway.worker.service.RouterModifier;
 import io.jsonwebtoken.lang.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.core.convert.support.GenericConversionService;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Predicate;
 
 /**
  * 开发测试用
@@ -38,7 +33,7 @@ public class DevInitData {
     void initDevData() {
 
         Map<String, ClientVo> clientVoMap = inMemoryConfigDataInfoService.getClientVoMap();
-        Map<String, SystemVo> stringSystemVoMap = inMemoryConfigDataInfoService.getStringSystemVoMap();
+        Map<String, SystemVo> stringSystemVoMap = inMemoryConfigDataInfoService.getSystemVoMap();
 
         ClientVo clientVo = ClientVo.builder().id(1L).appId("cliam-sys").appSecurity("=====").password("pssword")
                 .name("cliam-system").vaildDate(DateTime.now().offset(DateField.YEAR, 1)).vaildFlag(true)
@@ -70,6 +65,11 @@ public class DevInitData {
 //        FilterVo filterVo = FilterVo.builder().id(12L).name("EdiRequestBody")
 //                .args(MapUtil.<String,String>builder().put("key","hello").build()).build();
 //        routerVo.setFilterVos(Arrays.asList(filterVo));
+
+        FilterVo filterVo = FilterVo.builder().id(12L).name("WechatWebAuth")
+                .args(MapUtil.<String,String>builder().put("codeUrl","hello").put("tokenUrl","tokenUrl")
+                        .build()).build();
+        routerVo.setFilterVos(Arrays.asList(filterVo));
 
         PredicateVo predicateVo = PredicateVo.builder().id(1L).name("Path").order(1).routerId(routerVo.getId()).args(
                 Maps.of("patterns", "/anything").build()

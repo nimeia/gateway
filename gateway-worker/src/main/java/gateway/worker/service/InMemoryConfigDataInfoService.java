@@ -3,7 +3,6 @@ package gateway.worker.service;
 import gateway.event.ModifyEvent;
 import gateway.vo.ClientVo;
 import gateway.vo.SystemVo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -23,7 +22,7 @@ public class InMemoryConfigDataInfoService {
     /**
      * 用于保存所有系统信息
      */
-    Map<String, SystemVo> stringSystemVoMap = new HashMap<>();;
+    Map<String, SystemVo> systemVoMap = new HashMap<>();;
 
     /**
      * 删除对应的配置信息
@@ -72,8 +71,8 @@ public class InMemoryConfigDataInfoService {
         return clientVoMap;
     }
 
-    public Map<String, SystemVo> getStringSystemVoMap() {
-        return stringSystemVoMap;
+    public Map<String, SystemVo> getSystemVoMap() {
+        return systemVoMap;
     }
 
 

@@ -44,7 +44,7 @@ public class WechatApiAuthJob {
     @Scheduled(initialDelay = 2 * 60 * 1000, fixedRate = 2 * 60 * 1000)
     void updateAccessToken() {
         log.info("===========update the access token start===================");
-        Map<String, SystemVo> systemsMap = inMemoryConfigDataInfoService.getStringSystemVoMap();
+        Map<String, SystemVo> systemsMap = inMemoryConfigDataInfoService.getSystemVoMap();
         for (SystemVo systemvo : systemsMap.values()) {
             if (!(SystemVo.SystemType.wechat.toString().equals(systemvo.getSystemType())
                     || SystemVo.SystemType.wechatEnterprise.toString().equals(systemvo.getSystemType())
